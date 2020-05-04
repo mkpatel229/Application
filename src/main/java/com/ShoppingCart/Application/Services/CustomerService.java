@@ -8,6 +8,7 @@ import com.ShoppingCart.Application.Repositories.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,9 +17,12 @@ public class CustomerService {
     CustomerRepo customerRepo;
     @Autowired
     private JwtUtil jwtTokenUtil;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public ResponseEntity<?> register(Customer customer) {
         try {
+            customer.getUser().setPassword(passwordEncoder.encode(customer.getUser().getPassword()));
             customer = customerRepo.save(customer);
             return new ResponseEntity(customer,HttpStatus.OK);
         }catch (Exception e){
