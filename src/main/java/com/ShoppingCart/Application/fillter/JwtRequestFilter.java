@@ -1,7 +1,7 @@
 package com.ShoppingCart.Application.fillter;
 
 import com.ShoppingCart.Application.Jwt.JwtUtil;
-import com.ShoppingCart.Application.Services.MyUserDetailsService;
+import com.ShoppingCart.Application.Services.UserSerice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private UserSerice userDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

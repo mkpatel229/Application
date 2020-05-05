@@ -6,12 +6,10 @@ import com.ShoppingCart.Application.DTO.AuthenticationResponse;
 import com.ShoppingCart.Application.DTO.UserUpadte;
 import com.ShoppingCart.Application.Jwt.JwtUtil;
 import com.ShoppingCart.Application.Models.Customer;
-import com.ShoppingCart.Application.Models.User;
 import com.ShoppingCart.Application.Repositories.UserRepo;
 import com.ShoppingCart.Application.Services.CustomerService;
-import com.ShoppingCart.Application.Services.MyUserDetailsService;
+import com.ShoppingCart.Application.Services.UserSerice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +17,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.hibernate.Session;
 
 @RestController
 public class CustomerController {
@@ -31,7 +28,7 @@ public class CustomerController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private UserSerice userDetailsService;
     @Autowired
     private JwtUtil jwtTokenUtil;
 
