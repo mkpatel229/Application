@@ -60,13 +60,14 @@ public class CustomerController {
     }
 
     @PostMapping("/{customerId}/update")
-    public ResponseEntity<?> updateDetails(
-            @RequestHeader("Authorization") String token, @RequestBody UserUpadte userUpadte, @PathVariable Integer customerId){
+    public ResponseEntity<?> updateDetails(@RequestHeader("Authorization") String token,
+                                           @RequestBody UserUpadte userUpadte,
+                                           @PathVariable Integer customerId){
         try {
             return customerService.update(token,userUpadte,customerId);
         }
         catch (Exception e){
-            return  new ResponseEntity(new ApiError(HttpStatus.BAD_REQUEST,e.getMessage()),HttpStatus.BAD_REQUEST);
+            return  new ResponseEntity<ApiError>(new ApiError(HttpStatus.BAD_REQUEST,e.getMessage()),HttpStatus.BAD_REQUEST);
         }
     }
 }
