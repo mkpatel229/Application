@@ -24,7 +24,7 @@ public class CustomerService {
         try {
             customer.getUser().setPassword(passwordEncoder.encode(customer.getUser().getPassword()));
             customer = customerRepo.save(customer);
-            return new ResponseEntity(customer,HttpStatus.OK);
+            return new ResponseEntity<Customer>(customer,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<ApiError>(new ApiError(HttpStatus.BAD_REQUEST,"Username is not valid"), HttpStatus.BAD_REQUEST);
         }
@@ -43,7 +43,7 @@ public class CustomerService {
         }
         Customer customer = getCustomer(customerId);
         if(!customer.getUser().getUserId().equals(username)){
-            return  new ResponseEntity(
+            return  new ResponseEntity<ApiError>(
                     new ApiError(HttpStatus.BAD_REQUEST,"customer is not authorized with userId "+username),HttpStatus.BAD_REQUEST);
         }
         customer.setName(userUpadte.getName());
