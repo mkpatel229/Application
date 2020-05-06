@@ -24,6 +24,14 @@ public class ProductController {
         return  productService.addProduct(product);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/product/{prodid}")
+    public Product updateProduct(@PathVariable Integer prodid,@RequestBody Product product ){
+
+        product.setProductId(prodid);
+        return  productService.addProduct(product);
+    }
+
     @GetMapping("/product")
     public List<Product> getAllProduct(){
         return productService.getAllProduct();

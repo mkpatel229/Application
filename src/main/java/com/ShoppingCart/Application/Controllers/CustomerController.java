@@ -59,7 +59,7 @@ public class CustomerController {
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
-    @PostMapping("/{customerId}/update")
+    @PutMapping("/{customerId}/update")
     public ResponseEntity<?> updateDetails(@RequestHeader("Authorization") String token,
                                            @RequestBody UserUpadte userUpadte,
                                            @PathVariable Integer customerId){

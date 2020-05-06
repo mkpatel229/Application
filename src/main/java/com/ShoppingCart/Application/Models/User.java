@@ -23,4 +23,9 @@ public class User {
     @Column(columnDefinition = "varchar(255) default 'USER'")
     String role = "USER";
 
+    public User(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+        this.role = "USER";
+    }
 }
