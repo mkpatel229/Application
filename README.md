@@ -101,6 +101,10 @@ Spring boot web, Spring boot security, JPA, Postgre sql server, JWT
     *   Credential for Admin
         * User name : Admin
         * Password : admin
+        
+     *   Credential for User
+         * User name : User
+         * Password : user
      
      * To configure your own Postgre sql database change following details in 'src\main\resources\application.properties' file
         
