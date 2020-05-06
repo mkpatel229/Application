@@ -20,9 +20,12 @@ public class User {
 
     String password;
 
-//    @OneToOne
-//    @JoinColumn(name = "id")
-//    @MapsId
-//    Customer customer;
+    @Column(columnDefinition = "varchar(255) default 'USER'")
+    String role = "USER";
 
+    public User(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+        this.role = "USER";
+    }
 }

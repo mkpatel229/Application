@@ -32,7 +32,7 @@ public class CustomerService {
 
     public Customer getCustomer(Integer customerId) throws Exception {
         return customerRepo.findById(customerId).
-                orElseThrow(()->new Exception("NO customer is not register with id "+customerId));
+                orElseThrow(()->new Exception("customer is not register with id "+customerId));
     }
 
     public ResponseEntity<?> update(String token, UserUpadte userUpadte, Integer customerId) throws Exception {
@@ -44,7 +44,7 @@ public class CustomerService {
         Customer customer = getCustomer(customerId);
         if(!customer.getUser().getUserId().equals(username)){
             return  new ResponseEntity<ApiError>(
-                    new ApiError(HttpStatus.BAD_REQUEST,"customer is not authorized with userId "+username),HttpStatus.BAD_REQUEST);
+                    new ApiError(HttpStatus.BAD_REQUEST,"customer is not authorized with this userId "+username),HttpStatus.BAD_REQUEST);
         }
         customer.setName(userUpadte.getName());
         customer.getUser().setPassword(userUpadte.getPassword());
